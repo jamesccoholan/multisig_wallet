@@ -1,5 +1,5 @@
 const hre = require("hardhat");
-const fs = require('fs');
+const fs = require("fs");
 
 async function main() {
   const accounts = await ethers.provider.listAccounts();
@@ -9,13 +9,13 @@ async function main() {
   await multiSig.deployed();
 
   console.log("MultiSig deployed to:", multiSig.address);
-  const config = { address: multiSig.address }
+  const config = { address: multiSig.address };
   fs.writeFileSync("./app/__config.json", JSON.stringify(config, null, 2));
 }
 
 main()
   .then(() => process.exit(0))
-  .catch(error => {
+  .catch((error) => {
     console.error(error);
     process.exit(1);
   });
